@@ -1,0 +1,39 @@
+{
+  "node-remote": "http://localhost:3000",
+  "main": "app://node/index.html",
+  "name": "nw-demo",
+  "description": "demo app of node-webkit",
+  "version": "0.1.0",
+  "keywords": [
+    "demo",
+    "node-webkit"
+  ],
+  "window": {
+    "title": "node-webkit demo",
+    "icon": "link.png",
+    "toolbar": false,
+    "frame": false,
+    "resizable" : true,
+    "width": 1200,
+    "height": 600,
+    "position": "mouse"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {
+    "browser-sync": "^2.6.4",
+    "node-blink1": "^0.1.5",
+    "request": "^2.55.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/edi9999/blink-riot.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

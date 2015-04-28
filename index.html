@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Riot todo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css"></link>
+    <link rel="stylesheet" href="./main.css"></link>
+  </head>
+  <body class="container">
+    <h1>My color app</h1>
+
+    <colorcontrol
+        class="panel panel-default">
+    </colorcontrol>
+
+    <script src="colorcontrol.html" type="riot/tag"></script>
+    <script src="./bower_components/riot/riot+compiler.js"></script>
+    <script src="./keyboard.js"></script>
+    <script src="./riotcontrol.js"></script>
+    <script src="./blinkstore.js"></script>
+    <script>
+
+    var gui = require('nw.gui');
+    KeyboardJS.on ("ctrl+d",function(){
+      if (gui!=null)
+        gui.Window.get().showDevTools()
+    });
+    KeyboardJS.on ("ctrl+r",function(){
+        window.location.reload();
+    });
+
+    var noop = function(){};
+
+    function run_cmd(cmd, args, cb, end) {
+        var spawn = require('child_process').spawn,
+            child = spawn(cmd, args),
+            me = this;
+        child.stdout.on('data', function (buffer) { cb(me, buffer) });
+        child.stdout.on('end', end);
+    }
+
+    show_color = function(color) {
+        run_cmd('blink1-tool',["--rgb="+color,"--led","1","--blink","1"],noop,noop);
+        run_cmd('blink1-tool',["--rgb="+color,"--led","2","--blink","1"],noop,noop);
+    }
+
+    blinkstore.on('blink_init',function(){
+        require('./blinker.js')(blinkstore.events,show_color,console);
+    });
+
+    RiotControl.addStore(blinkstore);
+    riot.mount('colorcontrol');
+    </script>
+  </body>
+</html>

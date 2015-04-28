@@ -1,0 +1,19 @@
+{
+  "name": "blink",
+  "version": "0.0.0",
+  "authors": [
+    "hipp.edg@gmail.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "riot": "~2.0.14",
+    "bootstrap": "~3.3.4"
+  }
+}

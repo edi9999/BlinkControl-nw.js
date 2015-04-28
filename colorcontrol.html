@@ -1,0 +1,54 @@
+<colorcontrol>
+    <div class="panel-heading">My events</div>
+    <div class="list-group" each={blinkevents}>
+        <h3>Blink Event
+            <span contenteditable
+                oninput={parent.changeText}
+                >
+                { event_name }
+            </span>
+        </h3>
+
+        <input type="color" onchange={parent.changeColor} value={color}>
+        <span>
+            {color}
+        </span>
+    </div>
+    <br>
+    <div class="panel-body">
+        <input type="button" class="btn btn-primary btn-lg btn-block" onclick={add} value="Add event">
+    </div>
+
+    <script>
+    var self=this;
+    blinkstore.on('blinkevents_changed', function(blinkevents){
+        self.blinkevents=blinkevents;
+        self.update();
+    });
+    self.on('mount',function(){
+        RiotControl.trigger('blink_init');
+    });
+    changeColor(e) {
+        RiotControl.trigger('blink_change_color',e.item,e.target.value)
+    }
+    changeEventName(e) {
+        RiotControl.trigger('blink_change_event_name',e.item,e.target.textContent)
+    }
+    changeText(e) {
+        /*
+       console.log(e)
+        if (e.which===13 || e.which===27) {
+            document.activeElement.blur();
+            window.getSelection().removeAllRanges();
+            return
+        }
+        console.log('trigger');
+        */
+        RiotControl.trigger('blink_change_event_name',e.item,e.target.textContent)
+        return true
+    }
+    add(e){
+        RiotControl.trigger('blink_add');
+    }
+    </script>
+</colorcontrol>

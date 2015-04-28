@@ -1,0 +1,16 @@
+color,colorcontrol
+{
+    display:block;
+    -webkit-app-region:no-drag;
+}
+
+html
+{
+    padding:60px;
+    -webkit-app-region:drag;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
+[contenteditable] {  outline: 1px dashed #CCC; }
+[contenteditable]:hover { outline: 2px dashed #0090D2; }
