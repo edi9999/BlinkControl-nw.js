@@ -3,7 +3,8 @@
     <div class="list-group" each={blinkevents}>
         <h3>Blink Event
             <span contenteditable
-                oninput={parent.changeText}
+                onkeydown={parent.changeText}
+                onblur={parent.saveText}
                 >
                 { event_name }
             </span>
@@ -31,21 +32,17 @@
     changeColor(e) {
         RiotControl.trigger('blink_change_color',e.item,e.target.value)
     }
-    changeEventName(e) {
-        RiotControl.trigger('blink_change_event_name',e.item,e.target.textContent)
-    }
     changeText(e) {
-        /*
        console.log(e)
         if (e.which===13 || e.which===27) {
             document.activeElement.blur();
             window.getSelection().removeAllRanges();
             return
         }
-        console.log('trigger');
-        */
-        RiotControl.trigger('blink_change_event_name',e.item,e.target.textContent)
         return true
+    }
+    saveText(e) {
+        RiotControl.trigger('blink_save_event_name',e.item,e.target.textContent)
     }
     add(e){
         RiotControl.trigger('blink_add');

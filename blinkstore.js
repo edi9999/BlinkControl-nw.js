@@ -45,8 +45,7 @@ blinkstore.on('blink_change_color',function(blink,color){
     blinkstore.save();
 });
 
-blinkstore.on('blink_change_event_name',function(blink,event_name){
+blinkstore.on('blink_save_event_name',function(blink,event_name){
     blink.event_name=event_name;
     blinkstore.save();
-    // blinkstore.trigger('blinkstore_changed',blinkstore.events);
 });
