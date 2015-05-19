@@ -2,6 +2,10 @@
 
 This is just a simple demo of a blink1control app, it doesn't work completely as expected.
 
+Screenshot:
+
+![Blink1Control nw.js](screenshot.png)
+
 It now does:
 
  * manage blink events (you can choose a color and an event name)
